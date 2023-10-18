@@ -6,6 +6,7 @@ const authRouter = require("./src/routers/auth");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./src/routers/user");
 const errorHandler = require("./src/middlewares/errorHandler");
+const taskRouter = require("./src/routers/task");
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use(cookieParser());
 // routes
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use("/", taskRouter);
 
 // handling errors
 app.use(errorHandler);

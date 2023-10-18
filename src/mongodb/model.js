@@ -8,5 +8,5 @@ const taskModel = mongoose.model("tasks", taskSchema);
 
 module.exports = {
   userModel,
-  taskSchema,
+  taskModel,
 };
