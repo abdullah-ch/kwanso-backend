@@ -20,7 +20,8 @@ const getTaskByUserId = async (userId) => {
     { userId },
     {
       name: 1,
-      _id: 1,
+      _id: 0, // Exclude the default '_id' field
+      id: "$_id", // Rename '_id' to 'id'
     }
   );
   return tasks;
