@@ -1,28 +1,38 @@
-const { body, validationResult } = require('express-validator');
-const { UN_PROCESSABLE } = require('../constants/errorCodes');
-const AppError = require('../utils/error');
+const { body, validationResult } = require("express-validator");
+const { UN_PROCESSABLE } = require("../constants/errorCodes");
+const AppError = require("../utils/error");
 const userSignUpRules = () => {
   return [
-    body('email').isEmail().withMessage('Invalid Email Format'),
-    body('password')
+    body("email").isEmail().withMessage("Invalid Email Format"),
+    body("password")
       .not()
       .isEmpty()
       .bail()
       .isLength({ min: 6 })
-      .withMessage('password must be at least 6 chars long'),
-    body('name').isString().not().isEmpty().withMessage('Name cannot be empty'),
+      .withMessage("password must be at least 6 chars long"),
+    body("name").isString().not().isEmpty().withMessage("Name cannot be empty"),
   ];
 };
 
 const userLogInRules = () => {
   return [
-    body('email').isEmail().withMessage('Invalid Email Format'),
-    body('password')
+    body("email").isEmail().withMessage("Invalid Email Format"),
+    body("password")
       .not()
       .isEmpty()
       .bail()
       .isLength({ min: 6 })
-      .withMessage('password must be at least 6 chars long'),
+      .withMessage("password must be at least 6 chars long"),
+  ];
+};
+
+const taskCreationRules = () => {
+  return [
+    body("name")
+      .isString()
+      .not()
+      .isEmpty()
+      .withMessage("Task name cannot be empty"),
   ];
 };
 
@@ -41,4 +51,5 @@ module.exports = {
   userSignUpRules,
   userLogInRules,
   validate,
+  taskCreationRules,
 };

@@ -26,9 +26,7 @@ const createTask = async (req, res, next) => {
     );
   }
 };
-/**
-Returns: { tasks: [{ id: 1, name: "Task name" }, { id: 2, name: "Second task" }] }
- */
+
 const getTasks = async (req, res, next) => {
   try {
     const user = req.user;
